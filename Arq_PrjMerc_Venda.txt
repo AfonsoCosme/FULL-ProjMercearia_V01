@@ -1,0 +1,14 @@
+azeitona preta|35|Diversos|vend 99|comprador 99|1|000|08/03/2024
+cenoura|3|Legume|vend oo|comprador 09|100|10|08/03/2024
+cenoura|3|Legume|vend cc|comprador ACM|1|80|09/03/2024
+abacate|5|Verdura|vend cc|comprador ACM|1|120|10/03/2024
+carambola verde|53|Fruta|vend cc|comprador ACM|210|000|09/03/2024
+abacate|15|Diversos|vend 01|comp 04|900|300|09/03/2024
+carambola verde|53|Fruta|vend cc|comprador ACM|210|11130|09/03/2024
+carambola verde|53|Fruta|vend cc|comprador ACM|90|4770|10/03/2024
+carambola verde|53|Fruta|vend cc|comprador ACM|1|53|10/03/2024
+carambola verde|53|Fruta|vend cc|comprador ACM|1|53|09/03/2024
+carambola verde|53|Fruta|vend cc|comprador ACM|1|53|09/03/2024
+carambola verde|53|Fruta|vend aa|comprador CM|1|53|11/03/2024
+carambola verde|53|Fruta|vend aa|comprador CM|9|300|12/03/2024
+carambola verde|53|Fruta|vend ab|comprador CM|3|120|13/04/2024

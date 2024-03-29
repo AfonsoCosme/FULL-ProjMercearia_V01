@@ -1,0 +1,11 @@
+Fruta
+Verdura
+Legume
+Matinal
+Limpeza / Higiene
+Açougue / Peixaria
+Diversos
+Padaria
+Bebidas
+cat 3
+Bombonier

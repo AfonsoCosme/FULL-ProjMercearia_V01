@@ -1,0 +1,6 @@
+cenoura|3|Legume|800
+requeij�o|12|Matinal|45
+sab�o|9|Limpeza / Higiene|90
+suco|3|Matinal|120
+abacate|5|Verdura|10
+melancia|2|Fruta|1

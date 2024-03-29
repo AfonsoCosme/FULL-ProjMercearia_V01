@@ -1,0 +1,10 @@
+cenoura|3|Legume|600
+requeij�o|12|Matinal|45
+sab�o|9|Limpeza / Higiene|90
+suco|3|Matinal|120
+abacate|5|Verdura|16
+melancia|6|Fruta|100
+azeitona preta|35|Diversos|98
+carambola verde|53|Fruta|280
+suco abacaxi|11|Bebidas|1
+zeitona verde|53|Fruta|150
