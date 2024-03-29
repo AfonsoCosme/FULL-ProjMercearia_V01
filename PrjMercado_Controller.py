@@ -309,7 +309,7 @@ class FornecedorCont:
                           f'Telefone: {i.telefone} '
                           f'Categoria {i.categoria}')
             else:
-                print('*** sem FORNECEDOR/CATEGORIA não cadastrado ***')
+                print('*** ARQUIVO FORNECEDOR/CATEGORIA está vazio ***')
 
 ###########
 ########### PESSOA ############
@@ -347,12 +347,58 @@ class PessoaCont:
         else:
             print("*** CLIENTE não cadastrado ***")
 
+    def ListaPessoa(self):
+            verifPessoa = PessoaDao.ler()
+    
+            if verifPessoa:
+                for i in verifPessoa:
+                    print(f'Cliente: {i.nome} '
+                          f'CPF: {i.cpf} '
+                          f'Telefone: {i.telefone} '
+                          f'E-Mail: {i.email} ')
+                    print(f'Endereço {i.endereco}')
+            else:
+                print('*** ARQUIVO CLIENTE está vazio ***')
 
+
+
+"""     def AlteraFornecedor(self, atuCnpj, atuCategoria, alteraNome, alteraCnpj, alteraTelefone, alteraCategoria):
+                verifFornec = FornecedorDao.ler()
+                verifCad = CategoriaDao.ler()
+                existeFornec = list(filter(lambda verifFornec: verifFornec.cnpj == atuCnpj and
+                                        verifFornec.categoria == atuCategoria, verifFornec))
+                existeCat = list(filter(lambda verifCad: verifCad.categoria == atuCategoria, verifCad))
+
+                if existeFornec:
+                    if existeCat:
+                        verifFornec = list(map(lambda verifFornec:
+                                            Fornecedor(alteraNome,
+                                                        alteraCnpj,
+                                                        alteraTelefone,
+                                                        alteraCategoria)
+                                        if (verifFornec.cnpj == atuCnpj and
+                                            verifFornec.categoria == atuCategoria)
+                                        else (verifFornec), verifFornec))
+
+                        FornecedorDao.clearArq()
+                        for i in verifFornec:
+                            FornecedorDao.salvar(Fornecedor(i.nome,
+                                                            i.cnpj,
+                                                            i.telefone,
+                                                            i.categoria))
+                        print('FORNECEDOR/CATEGORIA alterado com SUCESSO')
+                    else:
+                        print('CATEGORIA não cadastrada')
+                    
+                else:
+                    print('*** FORNECEDOR/CATEGORIA não cadastrado ***')
+ """
+ 
 
 teste = PessoaCont()
-teste.CadastraPessoa('CM/AfonsoCosme', '333', '(21)98855-9341', 'acm@conduzo.com.br', 'moro aqui...')
-teste.DeletePessoa('555')
+#teste.CadastraPessoa('CM/AfonsoCosme', '333', '(21)98855-9341', 'acm@conduzo.com.br', 'moro aqui...')
+#teste.DeletePessoa('555')
 #teste.AlteraFornecedor('35.822.063/0001-60', 'Bombonier', 'ACM Fornec 68', '35.822.063/0001-60','(21)98855-9999', 'Bombonier')
-#teste.ListaFornecedor()
+teste.ListaPessoa()
 #teste.LisVendaPeriodo("10/03/2024", "12/03/2024")'
 
