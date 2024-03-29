@@ -350,8 +350,8 @@ class PessoaCont:
 
 
 teste = PessoaCont()
-teste.CadastraPessoa('CM/AfonsoCosme', '555', '(21)98855-9341', 'acm@conduzo.com.br', 'moro aqui...')
-teste.DeletePessoa('333')
+teste.CadastraPessoa('CM/AfonsoCosme', '333', '(21)98855-9341', 'acm@conduzo.com.br', 'moro aqui...')
+teste.DeletePessoa('555')
 #teste.AlteraFornecedor('35.822.063/0001-60', 'Bombonier', 'ACM Fornec 68', '35.822.063/0001-60','(21)98855-9999', 'Bombonier')
 #teste.ListaFornecedor()
 #teste.LisVendaPeriodo("10/03/2024", "12/03/2024")'
