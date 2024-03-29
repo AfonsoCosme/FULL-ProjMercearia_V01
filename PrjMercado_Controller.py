@@ -347,58 +347,53 @@ class PessoaCont:
         else:
             print("*** CLIENTE não cadastrado ***")
 
+    def AlteraPessoa(self, atuCpf, alteraNome, alteraCpf, alteraTelefone, alteraEmail, alteraEndereco):
+        verifPessoa = PessoaDao.ler()
+        existePessoa = list(filter(lambda verifPessoa: verifPessoa.cpf == atuCpf, verifPessoa))
+        existeAltCpf = list(filter(lambda verifPessoa: verifPessoa.cpf == alteraCpf, verifPessoa))
+
+        if existePessoa:
+            if existeAltCpf:
+                print('*** NOVO CPF já cadastrado ***')
+            else:
+                verifPessoa = list(map(lambda verifPessoa: 
+                                    Pessoa(alteraNome, 
+                                            alteraCpf,
+                                            alteraTelefone, 
+                                            alteraEmail, 
+                                            alteraEndereco) 
+                                if (verifPessoa.cpf == atuCpf)
+                                else (verifPessoa), verifPessoa))
+
+                PessoaDao.clearArq()
+                for i in verifPessoa:
+                    PessoaDao.salvar(Pessoa(i.nome,
+                                            i.cpf,
+                                            i.telefone,
+                                            i.email,
+                                            i.endereco))
+                print('CLIENTE alterado com SUCESSO')
+        else:
+            print('*** CPF/CLIENTE não cadastrado ***')
+
     def ListaPessoa(self):
             verifPessoa = PessoaDao.ler()
-    
+
             if verifPessoa:
                 for i in verifPessoa:
                     print(f'Cliente: {i.nome} '
-                          f'CPF: {i.cpf} '
-                          f'Telefone: {i.telefone} '
-                          f'E-Mail: {i.email} ')
+                            f'CPF: {i.cpf} '
+                            f'Telefone: {i.telefone} '
+                            f'E-Mail: {i.email} ')
                     print(f'Endereço {i.endereco}')
             else:
                 print('*** ARQUIVO CLIENTE está vazio ***')
-
-
-
-"""     def AlteraFornecedor(self, atuCnpj, atuCategoria, alteraNome, alteraCnpj, alteraTelefone, alteraCategoria):
-                verifFornec = FornecedorDao.ler()
-                verifCad = CategoriaDao.ler()
-                existeFornec = list(filter(lambda verifFornec: verifFornec.cnpj == atuCnpj and
-                                        verifFornec.categoria == atuCategoria, verifFornec))
-                existeCat = list(filter(lambda verifCad: verifCad.categoria == atuCategoria, verifCad))
-
-                if existeFornec:
-                    if existeCat:
-                        verifFornec = list(map(lambda verifFornec:
-                                            Fornecedor(alteraNome,
-                                                        alteraCnpj,
-                                                        alteraTelefone,
-                                                        alteraCategoria)
-                                        if (verifFornec.cnpj == atuCnpj and
-                                            verifFornec.categoria == atuCategoria)
-                                        else (verifFornec), verifFornec))
-
-                        FornecedorDao.clearArq()
-                        for i in verifFornec:
-                            FornecedorDao.salvar(Fornecedor(i.nome,
-                                                            i.cnpj,
-                                                            i.telefone,
-                                                            i.categoria))
-                        print('FORNECEDOR/CATEGORIA alterado com SUCESSO')
-                    else:
-                        print('CATEGORIA não cadastrada')
-                    
-                else:
-                    print('*** FORNECEDOR/CATEGORIA não cadastrado ***')
- """
  
 
 teste = PessoaCont()
 #teste.CadastraPessoa('CM/AfonsoCosme', '333', '(21)98855-9341', 'acm@conduzo.com.br', 'moro aqui...')
 #teste.DeletePessoa('555')
-#teste.AlteraFornecedor('35.822.063/0001-60', 'Bombonier', 'ACM Fornec 68', '35.822.063/0001-60','(21)98855-9999', 'Bombonier')
-teste.ListaPessoa()
+teste.AlteraPessoa("888", "AfonsoCosme/777", "777", "(77)98855-9341", "acm@conduzo.com.br", "moro na casa 77...")
+#teste.ListaPessoa()
 #teste.LisVendaPeriodo("10/03/2024", "12/03/2024")'
 
