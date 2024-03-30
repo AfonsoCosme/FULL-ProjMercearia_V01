@@ -352,9 +352,6 @@ class PessoaCont:
         existePessoa = list(filter(lambda verifPessoa: verifPessoa.cpf == atuCpf, verifPessoa))
         existeAltCpf = list(filter(lambda verifPessoa: verifPessoa.cpf == alteraCpf, verifPessoa))
 
-        print(existePessoa)
-        print(existeAltCpf)
-
         if existePessoa:
             if existeAltCpf:
                 print('*** NOVO CPF já cadastrado ***')
@@ -396,22 +393,86 @@ class PessoaCont:
 ########### FUNCIONARIO ############
 ###########
 class FuncionarioCont:
-    def CadastraFuncionario(self, nome, novoCpf, telefone, email, endereco, clt):
-        verifFunc = FuncionarioDao.ler()
-        existeFunc = list(filter(lambda verifFunc: verifFunc.cpf == novoCpf, verifFunc))
-
-        if not existeFunc:
-            FuncionarioDao.salvar(Funcionario(nome,novoCpf,telefone,email, endereco,clt))
-            print('FUNCIONARIO cadastrado com SUCESSO')
+    def CadastraFuncionario(self, nome, novoCpf, telefone, email, endereco, novoClt):
+        verifFuncRClt = FuncionarioDao.ler()
+        existeFuncRClt = list(filter(lambda verifFuncRClt: verifFuncRClt.cpf == novoCpf and 
+                                     verifFuncRClt.clt == novoClt, verifFuncRClt))
+        if not existeFuncRClt:
+            FuncionarioDao.salvar(Funcionario(nome,
+                                              novoCpf,
+                                              telefone,
+                                              email, 
+                                              endereco, 
+                                              novoClt))
+            print('FUNCIONARIO/REGISTRO CLT cadastrado com SUCESSO')
         else:
-            print('*** FUNCIONARIO já cadastrado ***')
+            print('*** FUNCIONARIO/REGISTRO CLT já cadastrado ***')
 
+    def DeleteFuncionario(self, deleteCpf, deleteClt):
+            verifFuncRClt = FuncionarioDao.ler()
+            existeFuncRClt = list(filter(lambda verifFuncRClt: verifFuncRClt.cpf == deleteCpf and 
+                                        verifFuncRClt.clt == deleteClt, verifFuncRClt))
+            
+            if existeFuncRClt:
+                existeFuncRClt = list(filter(lambda verifFuncRClt: verifFuncRClt.cpf != deleteCpf or 
+                                             verifFuncRClt.clt != deleteClt, verifFuncRClt))
+                FuncionarioDao.clearArq()
+                for i in existeFuncRClt:
+                    FuncionarioDao.salvar(Funcionario(i.nome,
+                                                      i.cpf,
+                                                      i.telefone,
+                                                      i.email,
+                                                      i.endereco, 
+                                                      i.clt))                
+                print("FUNCIONARIO/REGISTRO CLT removido com SUCESSO")
+            else:
+                print('*** FUNCIONARIO/REGISTRO CLT não cadastrado ***')
+
+    def AlteraFuncionario(self, atuCpf, atuClt, alteraNome, alteraCpf, alteraTelefone, alteraEmail, alteraEndereco, alteraClt):
+        verifFuncRClt = FuncionarioDao.ler()
+        existeFuncRClt = list(filter(lambda verifFuncRClt: verifFuncRClt.cpf == atuCpf and 
+                                     verifFuncRClt.clt == atuClt, verifFuncRClt))
+
+        if existeFuncRClt:
+            verifFuncRClt = list(map(lambda verifFuncRClt: Funcionario(alteraNome,
+                                                                       alteraCpf,
+                                                                       alteraTelefone,
+                                                                       alteraEmail,
+                                                                       alteraEndereco,
+                                                                       alteraClt)
+                            if (verifFuncRClt.cpf == atuCpf and verifFuncRClt.clt == atuClt)
+                            else (verifFuncRClt), verifFuncRClt))
+            FuncionarioDao.clearArq()
+            for i in verifFuncRClt:
+                FuncionarioDao.salvar(Funcionario(i.nome,
+                                                  i.cpf,
+                                                  i.telefone,
+                                                  i.email,
+                                                  i.endereco,
+                                                  i.clt))    
+            print('FUNCIONARIO/REGISTRO CLT alterado com SUCESSO!!')
+
+        else:
+            print('*** FUNCIONARIO/REGISTRO CLT não cadastrado ***')            
  
+    def ListaFuncionario(self):
+            verifFunc = FuncionarioDao.ler()
 
-teste = FuncionarioCont()
-teste.CadastraFuncionario('CM/AfonsoCosme', '701.627.867-99', '(21)98855-9341', 'acm@conduzo.com.br', 'moro aqui...', "REG-999")
-#teste.DeletePessoa('555')
-#teste.AlteraPessoa("888", "AfonsoCosme/000", "000", "(00)98855-9341", "acm000@conduzo.com.br", "moro na casa 00...")
-#teste.ListaPessoa()
+            if verifFunc:
+                for i in verifFunc:
+                    print(f'Cliente: {i.nome} '
+                          f'CPF: {i.cpf} '
+                          f'E-Mail: {i.email} ')
+                    print(f'Endereço {i.endereco}     RegCLT: {i.clt}')
+            else:
+                print('*** ARQUIVO FUNCIONÁRIO está vazio ***')
+
+
+
+#teste = FuncionarioCont()
+#teste.CadastraFuncionario('CM/AfonsoCosme', '701.627.867-yy', '(21)98855-9341', 'acm@conduzo.com.br', 'moro aqui...', "REG-0yy")
+#teste.DeleteFuncionario('701.627.867-yy', "REG-0yy")
+#teste.AlteraFuncionario("1818", "REG-018", "AfonsoCosme/0018", "181818", "(18)98855-9341", "acm000@conduzo.com.br", "moro na casa 00...", "REG-1818")
+#teste.ListaFuncionario()
 #teste.LisVendaPeriodo("10/03/2024", "12/03/2024")'
 

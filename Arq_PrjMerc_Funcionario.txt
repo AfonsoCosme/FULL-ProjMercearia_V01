@@ -1,6 +1,8 @@
 ACM Func|701.627.867-00|(21)96408-6742|afonsocosme@conduzo.com.br|Est.São João Marcos, 1740|CLT 001/RJ
 ACM Func|701.627.867-01|(21)96408-6742|afonsocosme@conduzo.com.br|Est.São João Marcos, 1741|CLT 001/RJ
-ACM Func|701.627.867-02|(21)96408-6742|afonsocosme@conduzo.com.br|Est.São João Marcos, 1742|CLT 001/RJ
-ACM Func|701.627.867-03|(21)96408-6742|afonsocosme@conduzo.com.br|Est.São João Marcos, 1743|CLT 001/RJ
-ACM Func|701.627.867-04|(21)96408-6742|afonsocosme@conduzo.com.br|Est.São João Marcos, 1744|CLT 001/RJ
+ACM Func|701.627.867-02|(21)96408-6742|afonsocosme@conduzo.com.br|Est.São João Marcos, 1742|CLT 002/RJ
+ACM Func|701.627.867-03|(21)96408-6742|afonsocosme@conduzo.com.br|Est.São João Marcos, 1743|CLT 003/RJ
 CM/AfonsoCosme|701.627.867-99|(21)98855-9341|acm@conduzo.com.br|moro aqui...|REG-999
+CM/AfonsoCosme|701.627.867-77|(21)98855-9341|acm@conduzo.com.br|moro aqui...|REG-077
+AfonsoCosme/0018|181818|(18)98855-9341|acm000@conduzo.com.br|moro na casa 00...|REG-1818
+CM/AfonsoCosme|701.627.867-yy|(21)98855-9341|acm@conduzo.com.br|moro aqui...|REG-0yy
