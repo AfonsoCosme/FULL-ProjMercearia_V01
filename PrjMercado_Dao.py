@@ -184,12 +184,12 @@ class FuncionarioDao:
     @classmethod
     def salvar(cls, funcionario: Funcionario):
         with open('Arq_PrjMerc_Funcionario.txt', 'a') as arq:
-           arq.writelines(funcionario.clt + "|" +
-                          funcionario.nome + "|" +
+           arq.writelines(funcionario.nome + "|" +
                           funcionario.cpf + "|" +
                           funcionario.telefone + "|" +
                           funcionario.email + "|" +
-                          funcionario.endereco + "\n")
+                          funcionario.endereco + "|" +
+                          funcionario.clt + "\n")
     @classmethod
     def ler(cls):
         with open('Arq_PrjMerc_Funcionario.txt', 'r') as arq:
@@ -197,12 +197,8 @@ class FuncionarioDao:
 
         cls.funcionario = list(map(lambda x: x.replace("\n", ""), cls.funcionario))  ### retira \n na leitura
         cls.funcionario = list(map(lambda x: x.split("|"), cls.funcionario))  ### separa registro em cada |
+
         func = []
         for i in cls.funcionario:
             func.append(Funcionario(i[0], i[1], i[2], i[3], i[4], i[5]))
         return func
-# fu1 = Funcionario("REG01/2000", "Func 01", "00000000000", "21900000000",
-#              "fun01@conduzo.com.br","rua do func, 123 - casa 02")
-# FuncionarioDao.salvar(fu1)
-# fu = FuncionarioDao.ler()
-# print(fu[0].clt, fu[0].nome, fu[0].cpf, fu[0].telefone, fu[0].email, fu[0].endereco)

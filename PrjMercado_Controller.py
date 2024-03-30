@@ -352,6 +352,9 @@ class PessoaCont:
         existePessoa = list(filter(lambda verifPessoa: verifPessoa.cpf == atuCpf, verifPessoa))
         existeAltCpf = list(filter(lambda verifPessoa: verifPessoa.cpf == alteraCpf, verifPessoa))
 
+        print(existePessoa)
+        print(existeAltCpf)
+
         if existePessoa:
             if existeAltCpf:
                 print('*** NOVO CPF já cadastrado ***')
@@ -388,12 +391,27 @@ class PessoaCont:
                     print(f'Endereço {i.endereco}')
             else:
                 print('*** ARQUIVO CLIENTE está vazio ***')
+
+###########
+########### FUNCIONARIO ############
+###########
+class FuncionarioCont:
+    def CadastraFuncionario(self, nome, novoCpf, telefone, email, endereco, clt):
+        verifFunc = FuncionarioDao.ler()
+        existeFunc = list(filter(lambda verifFunc: verifFunc.cpf == novoCpf, verifFunc))
+
+        if not existeFunc:
+            FuncionarioDao.salvar(Funcionario(nome,novoCpf,telefone,email, endereco,clt))
+            print('FUNCIONARIO cadastrado com SUCESSO')
+        else:
+            print('*** FUNCIONARIO já cadastrado ***')
+
  
 
-teste = PessoaCont()
-#teste.CadastraPessoa('CM/AfonsoCosme', '333', '(21)98855-9341', 'acm@conduzo.com.br', 'moro aqui...')
+teste = FuncionarioCont()
+teste.CadastraFuncionario('CM/AfonsoCosme', '701.627.867-99', '(21)98855-9341', 'acm@conduzo.com.br', 'moro aqui...', "REG-999")
 #teste.DeletePessoa('555')
-teste.AlteraPessoa("888", "AfonsoCosme/777", "777", "(77)98855-9341", "acm@conduzo.com.br", "moro na casa 77...")
+#teste.AlteraPessoa("888", "AfonsoCosme/000", "000", "(00)98855-9341", "acm000@conduzo.com.br", "moro na casa 00...")
 #teste.ListaPessoa()
 #teste.LisVendaPeriodo("10/03/2024", "12/03/2024")'
 

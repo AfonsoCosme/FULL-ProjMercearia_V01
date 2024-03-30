@@ -43,7 +43,12 @@ class Pessoa:
         self.email = email
         self.endereco = endereco
 
+""" class Funcionario(Pessoa):
+    def __init__(self, dadosPessoa: Pessoa, clt):
+        self.dadosPessoa = dadosPessoa
+        self.clt = clt """
+
 class Funcionario(Pessoa):
-    def __init__(self, clt, nome, cpf, telefone, email, endereco):
+    def __init__(self, nome, cpf, telefone, email, endereco, clt):
         self.clt = clt
-        super(Funcionario, self).__init__(self, nome, cpf, telefone, email, endereco)
+        super(Funcionario, self).__init__(nome, cpf, telefone, email, endereco)
